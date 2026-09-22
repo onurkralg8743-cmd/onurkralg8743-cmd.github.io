@@ -1,59 +1,133 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="tr">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="description" content="Onur - Kişisel web sitesi">
-<title>Onur | Kişisel Web Sitesi</title>
-<style>
-:root{--bg:#070b14;--card:#0e1625;--text:#f8fafc;--muted:#94a3b8;--a:#38bdf8;--b:#818cf8;--border:rgba(148,163,184,.14)}
-*{box-sizing:border-box;margin:0;padding:0}html{scroll-behavior:smooth}
-body{font-family:Inter,Arial,sans-serif;background:var(--bg);color:var(--text);line-height:1.6;overflow-x:hidden}
-a{text-decoration:none;color:inherit}
-nav{position:fixed;top:18px;left:50%;transform:translateX(-50%);width:min(1100px,92%);padding:13px 20px;border:1px solid var(--border);background:rgba(7,11,20,.75);backdrop-filter:blur(18px);border-radius:18px;display:flex;justify-content:space-between;align-items:center;z-index:10}
-.logo{font-size:20px;font-weight:800}.logo span{color:var(--a)}nav ul{display:flex;gap:24px;list-style:none}nav a{color:#cbd5e1;font-size:14px}nav a:hover{color:var(--a)}
-.hero{min-height:100vh;display:grid;place-items:center;text-align:center;padding:140px 7% 80px;background:radial-gradient(circle at 50% 20%,rgba(56,189,248,.13),transparent 38%)}
-.badge{display:inline-flex;gap:8px;align-items:center;border:1px solid var(--border);padding:8px 14px;border-radius:999px;color:#cbd5e1;font-size:13px;margin-bottom:22px}.dot{width:8px;height:8px;border-radius:50%;background:#22c55e;box-shadow:0 0 14px #22c55e}
-h1{font-size:clamp(48px,9vw,92px);line-height:1;letter-spacing:-3px;margin-bottom:22px}h1 span{background:linear-gradient(90deg,var(--a),var(--b));-webkit-background-clip:text;color:transparent}
-.hero p{max-width:680px;margin:auto;color:var(--muted);font-size:19px}.buttons{margin-top:32px;display:flex;justify-content:center;gap:12px;flex-wrap:wrap}
-.btn{padding:13px 21px;border-radius:12px;font-weight:700;font-size:14px;border:1px solid var(--border);transition:.25s}.primary{background:linear-gradient(135deg,var(--a),#60a5fa);color:#03111d;border:0}.secondary{background:rgba(15,23,42,.65)}.btn:hover{transform:translateY(-3px);box-shadow:0 14px 35px #0004}
-section{padding:100px 7%}.wrap{max-width:1100px;margin:auto}.eyebrow{color:var(--a);font-size:13px;font-weight:800;letter-spacing:2px;text-transform:uppercase;margin-bottom:10px}.title{font-size:clamp(30px,5vw,46px);margin-bottom:14px}.lead{color:var(--muted);max-width:650px}
-.about{display:grid;grid-template-columns:1.1fr .9fr;gap:28px;margin-top:40px}.card{background:linear-gradient(145deg,#111a2be6,#0a101ce6);border:1px solid var(--border);border-radius:22px;padding:30px}.card p{color:#b6c2d3}
-.stats{display:grid;grid-template-columns:1fr 1fr;gap:14px}.stat{padding:22px;border:1px solid var(--border);border-radius:18px;background:#0f172a80}.stat strong{display:block;color:var(--a);font-size:27px}.stat span{color:var(--muted);font-size:13px}
-.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:40px}.skill,.project{transition:.3s}.skill:hover,.project:hover{transform:translateY(-7px);border-color:#38bdf873}.icon{font-size:28px;margin-bottom:14px}.skill h3,.project h3{margin-bottom:8px}.skill p,.project p{color:var(--muted);font-size:14px}
-.project{min-height:205px;display:flex;flex-direction:column;justify-content:space-between}.project a{color:var(--a);font-weight:700;font-size:14px}
-.contact{text-align:center;margin-top:40px;padding:50px 25px;border:1px solid var(--border);border-radius:26px;background:linear-gradient(135deg,#38bdf81a,#818cf814)}.contact .lead{margin:auto}.socials{display:flex;justify-content:center;gap:12px;flex-wrap:wrap;margin-top:24px}.social{padding:10px 15px;border:1px solid var(--border);border-radius:10px;color:#cbd5e1;font-size:14px}.social:hover{border-color:var(--a);color:var(--a)}
-footer{border-top:1px solid var(--border);padding:28px 7%;text-align:center;color:#64748b;font-size:13px}
-.reveal{opacity:0;transform:translateY(25px);transition:.7s}.reveal.show{opacity:1;transform:none}
-@media(max-width:800px){nav ul{display:none}.about,.grid{grid-template-columns:1fr}section{padding:75px 6%}h1{letter-spacing:-2px}}
-</style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Onur'un Sitesi" />
+  <title>Onur'un Sitesi</title>
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-<nav><a class="logo" href="#anasayfa">ONUR<span>.</span></a><ul><li><a href="#hakkimda">Hakkımda</a></li><li><a href="#yetenekler">Yetenekler</a></li><li><a href="#projeler">Projeler</a></li><li><a href="#iletisim">İletişim</a></li></ul></nav>
+  <div class="glow glow-a"></div>
+  <div class="glow glow-b"></div>
 
-<section class="hero" id="anasayfa"><div class="reveal">
-<div class="badge"><span class="dot"></span> Yeni projelere açığım</div>
-<h1>Merhaba, ben <span>Onur.</span></h1>
-<p>Teknolojiye, web tasarımına ve yeni fikirler üretmeye ilgi duyan biriyim. Burası benim dijital alanım.</p>
-<div class="buttons"><a class="btn primary" href="#projeler">Projelerimi Gör →</a><a class="btn secondary" href="#iletisim">İletişime Geç</a></div>
-</div></section>
+  <header class="navbar">
+    <a href="#home" class="logo">ONUR<span>'UN SİTESİ</span></a>
 
-<section id="hakkimda"><div class="wrap reveal"><div class="eyebrow">01 — Hakkımda</div><h2 class="title">Kendimi ve yaptıklarımı keşfet.</h2><p class="lead">Eğitimini, hedeflerini ve ilgi alanlarını burada anlatabilirsin.</p>
-<div class="about"><div class="card"><p>Merhaba! Ben Onur. Teknoloji ve web dünyasını öğreniyor, fikirlerimi gerçek projelere dönüştürmeye çalışıyorum. Bu alanı zamanla yeni çalışmalarım ve başarılarımla geliştireceğim.</p></div>
-<div class="stats"><div class="stat"><strong>∞</strong><span>Öğrenme isteği</span></div><div class="stat"><strong>24/7</strong><span>Yeni fikirler</span></div><div class="stat"><strong>Web</strong><span>Odak alanım</span></div><div class="stat"><strong>2026</strong><span>Yeni başlangıç</span></div></div></div></div></section>
+    <button id="menuBtn" class="menu-btn" aria-label="Menüyü aç">☰</button>
 
-<section id="yetenekler"><div class="wrap reveal"><div class="eyebrow">02 — Yetenekler</div><h2 class="title">Neler yapıyorum?</h2><p class="lead">Öğrendiğin ve geliştirdiğin alanları buraya ekleyebilirsin.</p>
-<div class="grid"><div class="card skill"><div class="icon">⌘</div><h3>HTML</h3><p>Modern ve düzenli web sayfaları oluşturma.</p></div><div class="card skill"><div class="icon">✦</div><h3>CSS</h3><p>Responsive ve görsel açıdan güçlü tasarımlar.</p></div><div class="card skill"><div class="icon">⚡</div><h3>JavaScript</h3><p>Etkileşimli ve dinamik web deneyimleri.</p></div></div></div></section>
+    <nav id="navMenu">
+      <a href="#home">Ana Sayfa</a>
+      <a href="#about">Hakkımda</a>
+      <a href="#projects">Projeler</a>
+      <a href="#contact">İletişim</a>
+      <button id="themeBtn" class="nav-btn">🎨 Tema</button>
+      <button id="musicBtn" class="nav-btn">🎵 Müzik</button>
+      <button id="authBtn" class="auth-btn">Giriş / Kayıt</button>
+    </nav>
+  </header>
 
-<section id="projeler"><div class="wrap reveal"><div class="eyebrow">03 — Projeler</div><h2 class="title">Üzerinde çalıştığım işler.</h2><p class="lead">Projelerin hazır olduğunda bağlantılarını buraya ekleyebilirsin.</p>
-<div class="grid"><div class="card project"><div><div class="icon">🌐</div><h3>Kişisel Web Sitesi</h3><p>Modern, mobil uyumlu kişisel portföy sitesi.</p></div><a href="#anasayfa">Bu siteyi incele →</a></div><div class="card project"><div><div class="icon">📚</div><h3>Eğitim Sistemi</h3><p>Dersler, testler ve öğrenci ilerleme takibi için fikir projesi.</p></div><a href="#iletisim">Yakında →</a></div><div class="card project"><div><div class="icon">🚀</div><h3>Yeni Proje</h3><p>Bir sonraki fikrini burada sergileyebilirsin.</p></div><a href="#iletisim">Detaylar →</a></div></div></div></section>
+  <main>
+    <section id="home" class="hero">
+      <div class="hero-inner">
+        <p class="eyebrow">✦ HOŞ GELDİN</p>
+        <h1>Onur'un <span>Sitesi</span></h1>
+        <p class="subtitle">
+          Kişisel alanım • Projeler • Teknoloji • Daha fazlası
+        </p>
 
-<section id="iletisim"><div class="wrap reveal"><div class="contact"><div class="eyebrow">04 — İletişim</div><h2 class="title">Bir fikrin mi var?</h2><p class="lead">Bana ulaşmak için aşağıdaki bağlantıları kullanabilirsin.</p><p style="margin-top:14px;color:#cbd5e1">✉ onurkralg8743@outlook.com</p><div class="socials"><a class="social" href="mailto:ornek@email.com">✉ E-posta</a><a class="social" href="https://github.com/onurunsitesi9723" target="_blank">◉ GitHub</a><a class="social" href="https://www.reddit.com/user/PairSome5205/" target="_blank">● Reddit</a></div></div></div></section>
+        <div class="hero-actions">
+          <a href="#projects" class="btn primary">Projelerimi Gör</a>
+          <button id="heroAuthBtn" class="btn secondary">Giriş Yap</button>
+        </div>
 
-<footer>© 2026 Onur. Tüm hakları saklıdır.</footer>
-<script>
-const o=new IntersectionObserver(e=>e.forEach(x=>{if(x.isIntersecting)x.target.classList.add('show')}),{threshold:.12});
-document.querySelectorAll('.reveal').forEach(x=>o.observe(x));
-</script>
+        <div class="status">
+          <span class="dot"></span>
+          Site aktif
+        </div>
+      </div>
+    </section>
+
+    <section id="about" class="section">
+      <p class="eyebrow">01 — HAKKIMDA</p>
+      <h2>Kısaca ben</h2>
+
+      <div class="glass">
+        <p>
+          Merhaba! Ben Onur. Bu siteyi kendimi, projelerimi ve yaptığım
+          çalışmaları paylaşmak için hazırladım.
+        </p>
+      </div>
+    </section>
+
+    <section id="projects" class="section">
+      <p class="eyebrow">02 — PROJELER</p>
+      <h2>Çalışmalarım</h2>
+
+      <div class="cards">
+        <article class="glass card">
+          <div class="icon">🌐</div>
+          <h3>Kişisel Web Sitesi</h3>
+          <p>Modern, neon ve mobil uyumlu kişisel web sitesi.</p>
+        </article>
+
+        <article class="glass card">
+          <div class="icon">💻</div>
+          <h3>Yeni Proje</h3>
+          <p>Gelecekteki projelerim burada olacak.</p>
+        </article>
+
+        <article class="glass card">
+          <div class="icon">🚀</div>
+          <h3>Daha Fazlası</h3>
+          <p>Yeni fikirler ve çalışmalar yakında burada.</p>
+        </article>
+      </div>
+    </section>
+
+    <section id="contact" class="section">
+      <p class="eyebrow">03 — İLETİŞİM</p>
+      <h2>Bağlantılar</h2>
+
+      <div class="glass">
+        <p>GitHub: <strong>onurunsitesi9723</strong></p>
+        <p>Reddit: <strong>PairSome5205</strong></p>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    © 2026 Onur'un Sitesi
+  </footer>
+
+  <div id="authModal" class="modal" aria-hidden="true">
+    <div class="modal-card">
+      <button id="closeModal" class="close-btn">×</button>
+
+      <div class="tabs">
+        <button class="tab active" data-mode="login">Giriş Yap</button>
+        <button class="tab" data-mode="signup">Kayıt Ol</button>
+      </div>
+
+      <h2 id="authTitle">Tekrar hoş geldin 👋</h2>
+      <p id="authDesc" class="muted">Hesabına giriş yap.</p>
+
+      <form id="authForm">
+        <input id="email" type="email" placeholder="E-posta" required />
+        <input id="password" type="password" placeholder="Şifre" minlength="6" required />
+        <button id="submitBtn" class="btn primary full" type="submit">Giriş Yap</button>
+      </form>
+
+      <p id="authMessage" class="note">
+        Gerçek giriş/kayıt için Supabase bağlantısı gerekir.
+      </p>
+    </div>
+  </div>
+
+  <audio id="bgMusic" loop preload="none">
+    <source src="music.mp3" type="audio/mpeg" />
+  </audio>
+
+  <script src="app.js"></script>
 </body>
 </html>

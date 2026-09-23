@@ -1,34 +1,42 @@
-const navMenu = document.getElementById("navMenu");
-document.getElementById("menuBtn").onclick = () => {
-  navMenu.classList.toggle("open");
-};
+const SUPABASE_URL = "https://jbqzozewgjvuasdksuua.supabase.co";
+const SUPABASE_KEY = "BURAYA_KENDİ_PUBLISHABLE_KEYİNİ_YAPIŞTIR";
+
+const { createClient } = supabase;
+const client = createClient(SUPABASE_URL, SUPABASE_KEY);
 
 const modal = document.getElementById("authModal");
+const authBtn = document.getElementById("authBtn");
+const heroAuthBtn = document.getElementById("heroAuthBtn");
+const closeModal = document.getElementById("closeModal");
 
 function openModal() {
   modal.classList.add("show");
-  modal.setAttribute("aria-hidden", "false");
 }
 
-function closeModal() {
+function closeAuth() {
   modal.classList.remove("show");
-  modal.setAttribute("aria-hidden", "true");
 }
 
-document.getElementById("authBtn").onclick = openModal;
-document.getElementById("heroAuthBtn").onclick = openModal;
-document.getElementById("closeModal").onclick = closeModal;
+authBtn.onclick = openModal;
+heroAuthBtn.onclick = openModal;
+closeModal.onclick = closeAuth;
 
-modal.addEventListener("click", (e) => {
-  if (e.target === modal) closeModal();
-});
+modal.onclick = (e) => {
+  if (e.target === modal) closeAuth();
+};
+
+let mode = "login";
 
 document.querySelectorAll(".tab").forEach((tab) => {
-  tab.addEventListener("click", () => {
-    document.querySelectorAll(".tab").forEach((x) => x.classList.remove("active"));
+  tab.onclick = () => {
+    document.querySelectorAll(".tab")
+      .forEach((x) => x.classList.remove("active"));
+
     tab.classList.add("active");
 
-    const signup = tab.dataset.mode === "signup";
+    mode = tab.dataset.mode;
+
+    const signup = mode === "signup";
 
     document.getElementById("authTitle").textContent =
       signup ? "Yeni hesap oluştur 🚀" : "Tekrar hoş geldin 👋";
@@ -38,41 +46,65 @@ document.querySelectorAll(".tab").forEach((tab) => {
 
     document.getElementById("submitBtn").textContent =
       signup ? "Kayıt Ol" : "Giriş Yap";
-  });
+  };
 });
 
-document.getElementById("themeBtn").onclick = () => {
-  document.body.classList.toggle("alt");
-  localStorage.setItem(
-    "onur-theme",
-    document.body.classList.contains("alt") ? "alt" : "default"
-  );
-};
+document.getElementById("authForm").onsubmit = async (e) => {
+  e.preventDefault();
 
-if (localStorage.getItem("onur-theme") === "alt") {
-  document.body.classList.add("alt");
-}
+  const email = document.getElementById("email").value;
+  const password = document.getElementById("password").value;
+  const message = document.getElementById("authMessage");
 
-const music = document.getElementById("bgMusic");
-const musicBtn = document.getElementById("musicBtn");
+  message.textContent = "İşlem yapılıyor...";
 
-musicBtn.onclick = async () => {
-  try {
-    if (music.paused) {
-      await music.play();
-      musicBtn.textContent = "⏸️ Müzik";
-    } else {
-      music.pause();
-      musicBtn.textContent = "🎵 Müzik";
+  if (mode === "signup") {
+    const { error } = await client.auth.signUp({
+      email,
+      password
+    });
+
+    if (error) {
+      message.textContent = "Hata: " + error.message;
+      return;
     }
-  } catch (err) {
-    alert("Müzik için site klasörüne music.mp3 adlı bir dosya ekle.");
+
+    message.textContent =
+      "Kayıt başarılı! E-postanı kontrol et.";
+  } else {
+    const { error } = await client.auth.signInWithPassword({
+      email,
+      password
+    });
+
+    if (error) {
+      message.textContent = "Hata: " + error.message;
+      return;
+    }
+
+    message.textContent = "Giriş başarılı! 🎉";
+
+    setTimeout(() => {
+      closeAuth();
+      updateUser();
+    }, 1000);
   }
 };
 
-document.getElementById("authForm").addEventListener("submit", (e) => {
-  e.preventDefault();
+async function updateUser() {
+  const { data } = await client.auth.getUser();
 
-  document.getElementById("authMessage").textContent =
-    "Giriş/Kayıt arayüzü hazır. Gerçek hesap sistemi için Supabase bağlantısı kurulması gerekiyor.";
-});
+  if (data.user) {
+    authBtn.textContent = "🚪 Çıkış Yap";
+
+    authBtn.onclick = async () => {
+      await client.auth.signOut();
+      location.reload();
+    };
+  } else {
+    authBtn.textContent = "Giriş / Kayıt";
+    authBtn.onclick = openModal;
+  }
+}
+
+updateUser();

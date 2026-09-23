@@ -1,5 +1,5 @@
 const SUPABASE_URL = "https://jbqzozewgjvuasdksuua.supabase.co";
-const SUPABASE_KEY = "BURAYA_KENDİ_PUBLISHABLE_KEYİNİ_YAPIŞTIR";
+const SUPABASE_KEY = "sb_publishable_k3EIA-TivsPT2NDGYqZl6w_yVhXxUtA";
 
 const { createClient } = supabase;
 const client = createClient(SUPABASE_URL, SUPABASE_KEY);
